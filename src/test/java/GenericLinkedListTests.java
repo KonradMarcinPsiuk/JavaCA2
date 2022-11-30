@@ -30,10 +30,10 @@ public class GenericLinkedListTests {
         genericList.add(1,"Two");
         genericList.add(3,"Four");
 
-        assertEquals(genericList.get(0),"One");
-        assertEquals(genericList.get(1),"Two");
-        assertEquals(genericList.get(2),"Three");
-        assertEquals(genericList.get(3),"Four");
+        assertEquals("One"  ,genericList.get(0) );
+        assertEquals("Two"  ,genericList.get(1) );
+        assertEquals("Three",genericList.get(2) );
+        assertEquals("Four" ,genericList.get(3) );
     }
 
     @Test
@@ -68,8 +68,8 @@ public class GenericLinkedListTests {
         var one  = genericList.get(0);
         var two = genericList.get(1);
 
-        assertEquals(one,"One");
-        assertEquals(two,"Two");
+        assertEquals("One",one);
+        assertEquals("Two",two);
     }
 
     @Test

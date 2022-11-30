@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,13 +15,17 @@ public class GenericArrayListTests {
         genericList = new GenericArrayList<>();
     }
 
+
+
     @Test
     void add_AddTwoElements_ReturnTwo() {
         genericList.add("One");
-        assertEquals(genericList.size(), 1);
+        assertEquals(1,genericList.size());
 
         genericList.add("Two");
-        assertEquals(genericList.size(), 2);
+        assertEquals(2,genericList.size());
+
+
     }
 
     @Test
@@ -30,17 +35,17 @@ public class GenericArrayListTests {
         genericList.add(1, "Two");
         genericList.add(3, "Four");
 
-        assertEquals(genericList.get(0), "One");
-        assertEquals(genericList.get(1), "Two");
-        assertEquals(genericList.get(2), "Three");
-        assertEquals(genericList.get(3), "Four");
+        assertEquals("One",genericList.get(0) );
+        assertEquals("Two",genericList.get(1) );
+        assertEquals("Three",genericList.get(2) );
+        assertEquals("Four",genericList.get(3) );
     }
 
     @Test
     void addByIndex_AddToSecondIndex_ThrowException() {
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            genericList.add(1, "Three");
-        });
+        assertThrows(
+                IndexOutOfBoundsException.class,
+                () -> {genericList.add(1, "Three");});
     }
 
     @Test
@@ -51,8 +56,8 @@ public class GenericArrayListTests {
         genericList.set(0, "Three");
         genericList.set(1, "Four");
 
-        assertEquals(genericList.get(0), "Three");
-        assertEquals(genericList.get(1), "Four");
+        assertEquals( "Three", genericList.get(0));
+        assertEquals("Four",genericList.get(1));
     }
 
     @Test
@@ -70,8 +75,8 @@ public class GenericArrayListTests {
         var one = genericList.get(0);
         var two = genericList.get(1);
 
-        assertEquals(one, "One");
-        assertEquals(two, "Two");
+        assertEquals( "One",one);
+        assertEquals( "Two",two);
     }
 
     @Test
