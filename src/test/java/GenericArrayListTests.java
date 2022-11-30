@@ -10,36 +10,37 @@ public class GenericArrayListTests {
 
 
     @BeforeEach
-    void setup(){
+    void setup() {
         genericList = new GenericArrayList<>();
     }
 
     @Test
     void add_AddTwoElements_ReturnTwo() {
         genericList.add("One");
-        assertEquals(genericList.size(),1);
+        assertEquals(genericList.size(), 1);
 
         genericList.add("Two");
-        assertEquals(genericList.size(),2);
+        assertEquals(genericList.size(), 2);
     }
 
     @Test
     void addByIndex_AddFourElements_CheckForCorrectIndex() {
-        genericList.add(0,"Three");
-        genericList.add(0,"One");
-        genericList.add(1,"Two");
-        genericList.add(3,"Four");
+        genericList.add(0, "Three");
+        genericList.add(0, "One");
+        genericList.add(1, "Two");
+        genericList.add(3, "Four");
 
-        assertEquals(genericList.get(0),"One");
-        assertEquals(genericList.get(1),"Two");
-        assertEquals(genericList.get(2),"Three");
-        assertEquals(genericList.get(3),"Four");
+        assertEquals(genericList.get(0), "One");
+        assertEquals(genericList.get(1), "Two");
+        assertEquals(genericList.get(2), "Three");
+        assertEquals(genericList.get(3), "Four");
     }
 
     @Test
-    void addByIndex_AddToSecondIndex_ThrowException(){
-        assertThrows(IndexOutOfBoundsException.class,()->{
-            genericList.add(1,"Three");});
+    void addByIndex_AddToSecondIndex_ThrowException() {
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            genericList.add(1, "Three");
+        });
     }
 
     @Test
@@ -47,17 +48,18 @@ public class GenericArrayListTests {
         genericList.add("One");
         genericList.add("Two");
 
-        genericList.set(0,"Three");
-        genericList.set(1,"Four");
+        genericList.set(0, "Three");
+        genericList.set(1, "Four");
 
-        assertEquals(genericList.get(0),"Three");
-        assertEquals(genericList.get(1),"Four");
+        assertEquals(genericList.get(0), "Three");
+        assertEquals(genericList.get(1), "Four");
     }
 
     @Test
     void set_SetValueOutsideOFIndex_ThrowException() {
-        assertThrows(IndexOutOfBoundsException.class,()->{
-            genericList.set(1,"One");});
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            genericList.set(1, "One");
+        });
     }
 
     @Test
@@ -65,18 +67,19 @@ public class GenericArrayListTests {
         genericList.add("One");
         genericList.add("Two");
 
-        var one  = genericList.get(0);
+        var one = genericList.get(0);
         var two = genericList.get(1);
 
-        assertEquals(one,"One");
-        assertEquals(two,"Two");
+        assertEquals(one, "One");
+        assertEquals(two, "Two");
     }
 
     @Test
-    void get_GetValueOutsideTheIndex_ThrowException(){
+    void get_GetValueOutsideTheIndex_ThrowException() {
         genericList.add("One");
-        assertThrows(IndexOutOfBoundsException.class,()->{
-            genericList.get(1);});
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            genericList.get(1);
+        });
     }
 
     @Test
@@ -106,13 +109,13 @@ public class GenericArrayListTests {
         genericList.add("Two");
         genericList.add("Three");
 
-        var check1= genericList.remove("Two");
+        var check1 = genericList.remove("Two");
         var check2 = genericList.remove("Three");
 
         assertEquals(1, genericList.size());
         assertEquals("One", genericList.get(0));
-        assertEquals(true,check1);
-        assertEquals(true,check2);
+        assertEquals(true, check1);
+        assertEquals(true, check2);
     }
 
     @Test
@@ -124,7 +127,7 @@ public class GenericArrayListTests {
         var check = genericList.remove("Four");
 
         assertEquals(3, genericList.size());
-        assertEquals(false,check);
+        assertEquals(false, check);
     }
 
     @Test
@@ -156,8 +159,8 @@ public class GenericArrayListTests {
         genericList.add("Three");
 
         int i = 0;
-        for (var element: genericList) {
-            assertEquals(genericList.get(i),element);
+        for (var element : genericList) {
+            assertEquals(genericList.get(i), element);
             i++;
         }
     }

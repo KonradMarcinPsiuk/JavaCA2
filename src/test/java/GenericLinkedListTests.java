@@ -50,8 +50,8 @@ public class GenericLinkedListTests {
         genericList.set(0,"Three");
         genericList.set(1,"Four");
 
-        assertEquals(genericList.get(0),"Three");
-        assertEquals(genericList.get(1),"Four");
+        assertEquals("Three",genericList.get(0));
+        assertEquals("Four",genericList.get(1));
     }
 
     @Test

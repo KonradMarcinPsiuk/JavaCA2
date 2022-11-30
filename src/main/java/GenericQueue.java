@@ -1,6 +1,7 @@
-public class GenericQueue<T> implements IQueue<T>{
+public class GenericQueue<T> implements IQueue<T> {
     //FIFO
     private IList<T> queueData = new GenericArrayList<>();
+
     @Override
     public void enqueue(T element) {
         queueData.add(element);
@@ -18,6 +19,6 @@ public class GenericQueue<T> implements IQueue<T>{
 
     @Override
     public boolean empty() {
-        return queueData.size()==0;
+        return queueData.size() == 0;
     }
 }

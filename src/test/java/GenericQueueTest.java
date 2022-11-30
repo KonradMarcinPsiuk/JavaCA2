@@ -8,7 +8,7 @@ class GenericQueueTest {
     private GenericQueue<String> genericQueue;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         genericQueue = new GenericQueue<>();
     }
 
@@ -17,8 +17,8 @@ class GenericQueueTest {
         genericQueue.enqueue("One");
         genericQueue.enqueue("Two");
 
-        assertEquals("One",genericQueue.dequeue());
-        assertEquals("Two",genericQueue.dequeue());
+        assertEquals("One", genericQueue.dequeue());
+        assertEquals("Two", genericQueue.dequeue());
     }
 
 
@@ -27,17 +27,17 @@ class GenericQueueTest {
         genericQueue.enqueue("One");
         genericQueue.enqueue("Two");
 
-        assertEquals("One",genericQueue.first());
+        assertEquals("One", genericQueue.first());
     }
 
     @Test
     void empty_CheckingIfNewQueueIsEmpty() {
-        assertEquals(true,genericQueue.empty());
+        assertEquals(true, genericQueue.empty());
     }
 
     @Test
     void empty_AddElement_CheckingIfQueueIsNotEmpty() {
         genericQueue.enqueue("One");
-        assertEquals(false,genericQueue.empty());
+        assertEquals(false, genericQueue.empty());
     }
 }

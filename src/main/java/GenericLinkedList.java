@@ -53,44 +53,55 @@ public class GenericLinkedList<T> implements IList<T> {
     public void add(int index, T element) throws IndexOutOfBoundsException {
         Node n = head;
         Node newNode = new Node(element);
-        if(index==0 && head == null){
+
+        if (index == 0) {
+            newNode.nextNode = head;
             head = newNode;
             return;
         }
-
-        for (int i = 0; i < index - 1; i++) {
-            if (n.nextNode == null)
-                throw new IndexOutOfBoundsException("Index out of bounds");
+        int i = 0;
+        boolean exceptionFlag = true;
+        while (n != null) {
+            if (i == index - 1) {
+                newNode.nextNode = n.nextNode;
+                n.nextNode = newNode;
+                exceptionFlag = false;
+            }
             n = n.nextNode;
+            i++;
         }
-        newNode.nextNode = n.nextNode;
-        n.nextNode = newNode;
+        if (exceptionFlag)
+            throw new IndexOutOfBoundsException("Index out of bounds");
+
         size++;
     }
 
     @Override
     public T set(int index, T element) {
+        Node n = head;
         Node newNode = new Node(element);
-        if(index==0){
+
+        if (index == 0) {
             var oldNode = head;
-            head=newNode;
-            head.nextNode = oldNode.nextNode;
-            setHeadAndTail(index, newNode);
+            newNode.nextNode = head.nextNode;
+            head = newNode;
             return (T) oldNode.getData();
         }
-        Node n = head;
+        int i = 0;
 
-        for (int i = 0; i < index - 1; i++) {
-            if (n==null || n.nextNode == null)
-                throw new IndexOutOfBoundsException("Index out of bounds");
+        while (n != null) {
+            if (i == index - 1) {
+                var oldNode = n.nextNode;
+                newNode.nextNode = oldNode.nextNode;
+                n.nextNode = newNode;
+                return (T) oldNode.getData();
+            }
             n = n.nextNode;
+            i++;
         }
-        Node<T> oldNode = n.nextNode;
-        n.nextNode = newNode;
-        newNode.nextNode = oldNode.nextNode;
 
-        setHeadAndTail(index, newNode);
-        return oldNode.getData();
+        throw new IndexOutOfBoundsException("Index out of bounds");
+
     }
 
     @Override
@@ -161,7 +172,7 @@ public class GenericLinkedList<T> implements IList<T> {
         while (n.nextNode != null) {
             if (n.nextNode.getData() == elem) {
                 n.nextNode = n.nextNode.nextNode;
-                if(n.nextNode==null)
+                if (n.nextNode == null)
                     tail = n;
                 size--;
                 return true;
@@ -179,8 +190,8 @@ public class GenericLinkedList<T> implements IList<T> {
     @Override
     public boolean contains(T element) {
         Node<T> n = head;
-        while(n!=null){
-            if(n.getData()==element)
+        while (n != null) {
+            if (n.getData() == element)
                 return true;
             n = n.nextNode;
         }
@@ -192,12 +203,6 @@ public class GenericLinkedList<T> implements IList<T> {
         return new GenericLinkedListIterator();
     }
 
-    private void setHeadAndTail(int index, Node node) {
-        if (index == 0)
-            head = node;
-        if (node.nextNode == null)
-            tail = node;
-    }
 
     class GenericLinkedListIterator implements Iterator<T> {
 

@@ -1,6 +1,7 @@
 public class GenericStack<T> implements IStack<T> {
     //LIFO
     private IList<T> stackData = new GenericArrayList<>();
+
     @Override
     public void push(T element) {
         stackData.add(element);
@@ -8,7 +9,7 @@ public class GenericStack<T> implements IStack<T> {
 
     @Override
     public T pop() {
-        int lastIndex = stackData.size()-1;
+        int lastIndex = stackData.size() - 1;
         return stackData.remove(lastIndex);
     }
 
@@ -19,6 +20,6 @@ public class GenericStack<T> implements IStack<T> {
 
     @Override
     public boolean empty() {
-        return stackData.size()==0;
+        return stackData.size() == 0;
     }
 }

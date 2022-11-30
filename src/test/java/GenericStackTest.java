@@ -8,7 +8,7 @@ class GenericStackTest {
     GenericStack<String> genericStack;
 
     @BeforeEach
-    void setup(){
+    void setup() {
         genericStack = new GenericStack<>();
     }
 
@@ -17,10 +17,9 @@ class GenericStackTest {
         genericStack.push("One");
         genericStack.push("Two");
 
-        assertEquals("Two",genericStack.pop());
-        assertEquals("One",genericStack.pop());
+        assertEquals("Two", genericStack.pop());
+        assertEquals("One", genericStack.pop());
     }
-
 
 
     @Test
@@ -28,17 +27,17 @@ class GenericStackTest {
         genericStack.push("One");
         genericStack.push("Two");
 
-        assertEquals("One",genericStack.peek());
+        assertEquals("One", genericStack.peek());
     }
 
     @Test
     void empty_CheckingIfNewStackIsEmpty() {
-        assertEquals(true,genericStack.empty());
+        assertEquals(true, genericStack.empty());
     }
 
     @Test
     void empty_AddElement_CheckingIfStackIsNotEmpty() {
         genericStack.push("One");
-        assertEquals(false,genericStack.empty());
+        assertEquals(false, genericStack.empty());
     }
 }
